@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.37.1
+    hooks:
+      - id: yamllint
+        entry: yamllint
+        language: python
+
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.27.2
+    hooks:
+      - id: gitleaks
+        stages: [pre-commit]
+
+  - repo: local
+    hooks:
+      - id: talisman
+        name: talisman
+        entry: talisman --githook pre-commit
+        language: system
+        types: [file]
+
